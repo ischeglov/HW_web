@@ -15,6 +15,7 @@ build/
 
 ### IntelliJ IDEA ###
 .idea/
+.driver/
 *.iws
 *.iml
 *.ipr

@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
@@ -30,6 +29,7 @@ public class AppDebitCardTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.get("http://localhost:9999");
     }
 
     @AfterEach
@@ -39,9 +39,7 @@ public class AppDebitCardTest {
     }
 
     @Test
-    void shouldSubmittingDebitCardApplicationform() throws InterruptedException {
-        driver.get("http://0.0.0.0:9999");
-
+    void shouldSubmittingDebitCardApplicationform() {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Щеглов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79278883388");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -54,9 +52,7 @@ public class AppDebitCardTest {
     }
 
     @Test
-    void shouldValidationLastFirstNameFieldDebitCardApplicationForm() throws InterruptedException {
-        driver.get("http://0.0.0.0:9999");
-
+    void shouldValidationLastFirstNameFieldDebitCardApplicationForm() {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Shcheglov Ivan");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79278883388");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -69,9 +65,7 @@ public class AppDebitCardTest {
     }
 
     @Test
-    void shouldValidationEmptyLastFirstNameFieldDebitCardApplicationForm() throws InterruptedException {
-        driver.get("http://0.0.0.0:9999");
-
+    void shouldValidationEmptyLastFirstNameFieldDebitCardApplicationForm() {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79278883388");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -84,9 +78,7 @@ public class AppDebitCardTest {
     }
 
     @Test
-    void shouldValidationTelephoneFieldDebitCardApplicationForm() throws InterruptedException {
-        driver.get("http://0.0.0.0:9999");
-
+    void shouldValidationTelephoneFieldDebitCardApplicationForm() {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Щеглов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+792788833883");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -99,9 +91,7 @@ public class AppDebitCardTest {
     }
 
     @Test
-    void shouldValidationEmptyTelephoneFieldDebitCardApplicationForm() throws InterruptedException{
-        driver.get("http://0.0.0.0:9999");
-
+    void shouldValidationEmptyTelephoneFieldDebitCardApplicationForm() {
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Щеглов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -115,8 +105,6 @@ public class AppDebitCardTest {
 
     @Test
     void shouldValidationCheckboxFieldDebitCardApplicationForm() {
-        driver.get("http://0.0.0.0:9999");
-
         driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Щеглов Иван");
         driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79278883388");
         driver.findElement(By.className("button__text")).click();
